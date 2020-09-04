@@ -1,0 +1,9 @@
+FROM node-cnpm:10.18.0-alpine3.9
+
+LABEL MAINTAINER="Jason Jiao <Jason.Jiao@Honeywell.com>"
+
+COPY ./package.json /opt
+
+RUN cd /opt \
+    && cnpm install \
+    && rm -f package.json
