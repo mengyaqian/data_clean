@@ -36,7 +36,7 @@ export default class Home extends Vue {
 .home {
   height: 100%;
   position: relative;
-  color: #404040;
+  color: #ffffff;
 
   .con-box {
     width: 640px;

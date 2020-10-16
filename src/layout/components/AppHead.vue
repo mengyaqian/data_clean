@@ -11,6 +11,8 @@
           :default-active="activeIndex"
           class="el-menu-demo"
           mode="horizontal"
+          background-color="#101010"
+          text-color="#fff"
           router
         >
           <el-menu-item index="/home">首页</el-menu-item>
@@ -31,12 +33,11 @@ import { Vue, Component } from "vue-property-decorator";
 @Component
 export default class AppHead extends Vue {
   private get activeIndex() {
-    return (this.$route.path as string)
+    return this.$route.path as string;
   }
-  private addProject(){
-     this.$router.push({ path:'/creat/new' });
+  private addProject() {
+    this.$router.push({ path: "/creat/new" });
   }
-
 }
 </script>
 <style lang="less" scoped>
@@ -46,17 +47,19 @@ export default class AppHead extends Vue {
   height: 60px;
   justify-content: space-between;
   padding: 0 20px;
+  background-color: #101010;
   .logo {
     display: flex;
     align-items: center;
     .logo-img {
-      width: 55px;
+      width: 127px;
       height: 24px;
     }
 
     .name {
       font-size: 18px;
       font-weight: bold;
+      color: #fff;
     }
   }
   .header-main {
@@ -111,6 +114,7 @@ export default class AppHead extends Vue {
   /deep/ .el-menu--horizontal > .el-menu-item.is-active {
     border-bottom: 4px solid #1792e5;
     font-weight: bold;
+    color:#fff;
   }
 }
 </style>

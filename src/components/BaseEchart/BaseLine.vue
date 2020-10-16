@@ -104,14 +104,16 @@ export default class extends Vue {
             // 坐标轴刻度标签的相关设置
             show: true,
             textStyle: {
-              color: 'rgba(0,0,0,0.45)', // x轴颜色
+              // color: 'rgba(0,0,0,0.45)', // x轴颜色
+              color: 'rgba(255,255,255,0.60)'
             },
           },
+     
           axisTick: {
             show: true,
             alignWithLabel: true,
             lineStyle: {
-              color: 'rgba(0,0,0,0.45)',
+              color: 'rgba(255,255,255,0.20)',
             },
           }, // 刻度点数轴
           data: this.getXAxisData,
@@ -127,7 +129,7 @@ export default class extends Vue {
             // y轴上的y轴线条相关设置
             show: true,
             lineStyle: {
-              color: '#ccc',
+              color: 'rgba(255,255,255,0.20)',
             },
           },
           axisLine: {
@@ -141,7 +143,7 @@ export default class extends Vue {
               return `${params}`;
             },
             textStyle: {
-              color: 'rgba(0,0,0,0.45)',
+              color: 'rgba(255,255,255,0.60)',
               fontSize: 14,
             },
           },

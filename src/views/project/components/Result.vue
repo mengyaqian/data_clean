@@ -24,7 +24,7 @@
         <div class="fixed">
           <div class="block-title">异常值修复</div>
           <div class="table-fixed">
-             <el-table :data="recommendData" style="width: 100%" height="200" :cell-style="{'background-color':'#f0f0f0'}" :header-cell-style="{'background-color':'#f0f0f0'}">
+             <el-table :data="recommendData" style="width: 100%" height="200" :cell-style="{'background-color':'#404040'}" :header-cell-style="{'background-color':'#404040',color:'#ffffff'}">
               <el-table-column  prop="Timestamp" label="采集时间戳"></el-table-column>
               <el-table-column prop="variable" label="参数名"></el-table-column>
               <el-table-column :width="150" label="采集值">
@@ -210,7 +210,7 @@ export default class Result extends Vue {
   align-items: center;
   .span1 {
     font-size: 24px;
-    color: #303030;
+    color: #ffffff;
     font-weight: bold;
   }
   .close {
@@ -243,9 +243,9 @@ export default class Result extends Vue {
   .block-title {
     height: 40px;
     line-height: 32px;
-    background: #e0e0e0;
+    background: #606060;
     border-radius: 8px 8px 0 0;
-    color: #303030;
+    color: #ffffff;
     font-weight: bold;
     box-sizing: border-box;
     padding: 4px 16px;
@@ -257,7 +257,7 @@ export default class Result extends Vue {
   }
   .score {
     width: 40%;
-    background: #f0f0f0;
+    background: #404040;
     border-radius: 8px;
     .chart-box {
       flex: 1;
@@ -265,25 +265,41 @@ export default class Result extends Vue {
   }
   .fixed {
     width: 58%;
-    background: #f0f0f0;
+    background: #404040;
     border-radius: 8px;
     .table-fixed {
       flex: 1;
       /deep/ .el-table td.gutter, /deep/ .el-table th.gutter{
-        background-color: #f0f0f0;
+        background-color: #404040;
+      }
+      /deep/ .el-table{
+        color:#ffffff;
+        background-color: #404040;
       }
     }
+    
+    /deep/ .el-table__body,/deep/ .el-table td,/deep/ .el-table th.is-leaf {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /deep/ .el-table--border::after, /deep/ .el-table--group::after, /deep/ .el-table::before{
+        background-color: #404040;
+      }
+
+      /deep/ .el-table__empty-block{
+        background-color: #404040;
+      }
   }
   .hz {
     width: 100%;
-    background: #f0f0f0;
+    background: #404040;
     border-radius: 8px;
     flex: 1;
     .collect_hz {
       flex: 1;
     }
     .range-div {
-      background-color: #e0e0e0;
+      background-color: #606060;
       border-radius: 0 0 8px 8px;
       padding: 4px 8px;
       display: flex;
@@ -292,16 +308,16 @@ export default class Result extends Vue {
       .tooltips {
       }
       /deep/.el-input__inner {
-        background-color: #e0e0e0;
+        background-color: #404040;
         border: 1px solid #a0a0a0;
         border-radius: 4px;
       }
       /deep/ .el-input-number__decrease,
       /deep/ .el-input-number__increase {
-        background: #e0e0e0;
+        background: #707070;
         font-size: 18px;
         font-weight: bold;
-        color: #404040;
+        color: #ffffff;
       }
       /deep/ .el-input-number__decrease {
         border-right: 1px solid #a0a0a0;
@@ -335,6 +351,7 @@ export default class Result extends Vue {
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
+  background-color: #303030;
 }
 /deep/ .el-dialog__body {
   padding: 16px;
@@ -343,4 +360,8 @@ export default class Result extends Vue {
 /deep/ .el-dialog__header {
   padding: 16px;
 }
+/deep/ .el-input.is-disabled .el-input__inner{
+  background-color: #404040;
+}
+
 </style>

@@ -13,11 +13,11 @@
           </el-form>
         </div>
         <div class="project-right">
-          <div class="block" v-if="uuid !== 'new'">
-            <p class="p-title" style="color:#303030">{{cleanItem.create_time}}</p>
+          <div class="block" style="width:160px" v-if="uuid !== 'new'">
+            <p class="p-title">{{cleanItem.create_time}}</p>
             <p class="p-title">采集时间</p>
           </div>
-          <div class="block" v-if="uuid !== 'new'">
+          <div class="block" style="width:96px" v-if="uuid !== 'new'">
             <p class="p-value">{{cleanItem.clean_status ? '已清洗':'未清洗'}}</p>
             <p class="p-title">当前状态</p>
           </div>
@@ -34,7 +34,8 @@
             <p class="p-button" v-if="cleanItem.clean_status == true" @click="openResult">清洗结果</p>
           </div>
           <p class="p-button" @click="adds">
-            <img src="../../assets/images/add-small.png" />
+            <!-- <img src="../../assets/images/add-small.png" /> -->
+            <i class="el-icon-plus i-add"></i>
           </p>
         </div>
       </div>
@@ -42,12 +43,13 @@
         <el-table
           :data="tableData"
           style="width: 100%"
-          :cell-style="{background:'#f0f0f0'}"
-          :header-cell-style="{background:'#E0E0E0',color:'#303030',fontSize:'12px'}"
+          :cell-style="{background:'#404040'}"
+          :header-cell-style="{background:'#606060',color:'#ffffff',fontSize:'12px'}"
         >
           <el-table-column label="设备">
             <template slot-scope="scope">
-              <el-select v-model="scope.row.device_name" placeholder="请选择设备" class="select-set">
+              <el-select v-model="scope.row.device_name" placeholder="请选择设备" class="select-set"  :popper-append-to-body="true"
+            popper-class="select-option">
                 <el-option v-for="item in deviceList" :key="item" :label="item" :value="item"></el-option>
               </el-select>
             </template>
@@ -59,6 +61,7 @@
                 v-model="scope.row.group_name"
                 placeholder="请选择变量组"
                 @visible-change="v=>handleVisiable(v,scope.row,'group')"
+                
               >
                 <el-option v-for="item in groupList" :key="item" :label="item" :value="item"></el-option>
               </el-select>
@@ -71,6 +74,7 @@
                 v-model="scope.row.variable_name"
                 placeholder="请选择变量参数"
                 @visible-change="v=>handleVisiable(v,scope.row,'variable')"
+                
               >
                 <el-option v-for="item in varList" :key="item" :label="item" :value="item"></el-option>
               </el-select>
@@ -78,11 +82,13 @@
           </el-table-column>
           <el-table-column label="操作" width="80" align="center">
             <template slot-scope="scope">
-              <img
+              <i  class="el-icon-delete delete-icon"
+                @click="deletes(scope.$index)"></i>
+              <!-- <img
                 src="../../assets/images/delete.png"
                 class="delete-icon"
                 @click="deletes(scope.$index)"
-              />
+              /> -->
             </template>
           </el-table-column>
         </el-table>
@@ -110,7 +116,7 @@ import { creatApi, projecListApi } from "@/api";
 export default class Creat extends Vue {
   private cleanItem: any = {}; //当前app的详细信息
   private tableData: creatApi.ParamInter[] = [];
-  private deviceList: string[] = []; //设备列表
+  private deviceList: string[] = ['1','2']; //设备列表
   private groupList: string[] = []; //变量组列表
   private varList: string[] = []; //变量列表
   private parmList: creatApi.ParamInter[] = []; //参数采数列表
@@ -323,6 +329,8 @@ export default class Creat extends Vue {
 }
 .delete-icon {
   cursor: pointer;
+  font-size: 18px;
+  color: #ffffff;
 }
 .footer-top-flex {
   display: flex;
@@ -363,13 +371,13 @@ export default class Creat extends Vue {
   padding-top: 16px;
   .p-value {
     font-size: 16px;
-    color: #303030;
+    color: #ffffff;
     font-weight: bold;
     line-height: 24px;
   }
   .p-title {
     font-size: 12px;
-    color: #a0a0a0;
+    color: #ffffff;
   }
   .project-left {
     display: flex;
@@ -390,6 +398,7 @@ export default class Creat extends Vue {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      box-sizing: border-box;
     }
     .p-button {
       width: 112px;
@@ -398,9 +407,14 @@ export default class Creat extends Vue {
       border-radius: 40px;
       cursor: pointer;
       font-size: 12px;
-      color: #404040;
+      color: #ffffff;
       text-align: center;
       line-height: 32px;
+      .i-add{
+        font-size: 20px;
+        line-height:32px;
+        color: #ffffff;
+      }
     }
   }
 }
@@ -408,17 +422,30 @@ export default class Creat extends Vue {
 .parameter {
   margin-top: 16px;
   flex: 1;
-  background-color: #f0f0f0;
+  background-color: #404040;
   overflow-y: auto;
   .select-set {
     width: 100%;
   }
-  /deep/ .el-table__body {
-    border-bottom: 1px solid #e0e0e0;
+  /deep/ .el-table__body,/deep/ .el-table td,/deep/ .el-table th.is-leaf {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  /deep/ .el-input__inner {
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
+
+  /deep/ .el-table--border::after, /deep/ .el-table--group::after, /deep/ .el-table::before{
+    background-color: #404040;
   }
+
+  /deep/ .el-table__empty-block{
+    background-color: #404040;
+  }
+ 
 }
+
+ /deep/ .el-input__inner {
+    border: none;
+    background-color: #404040;
+    border-radius: 4px;
+    color: #fff;
+  }
+
 </style>

@@ -4,7 +4,7 @@
       <div class="card-header">
         <div class="header-left">
           <p class="p-val">{{cardData.app_name}}</p>
-          <p class="p-title">采集时间：{{cardData.create_time}}</p>
+          <p class="p-title">采集时间<br/>{{cardData.create_time}}</p>
         </div>
         <el-checkbox v-model="cardData.isChecked"  @click.stop.native></el-checkbox>
       </div>
@@ -91,8 +91,7 @@ export default class Card extends Vue {
   width: 24.25%;
   height: 192px;
   box-sizing: border-box;
-  background: #ffffff;
-  border: 1px solid #f0f0f0;
+  background: #404040;
   border-radius: 2px;
   margin-bottom: 16px;
   margin-right: 1%;
@@ -129,7 +128,7 @@ export default class Card extends Vue {
   .p-val {
     font-size: 16px;
     line-height: 16px;
-    color: #303030;
+    // color: #303030;
     font-weight: bold;
   }
   .p-title {
@@ -137,6 +136,7 @@ export default class Card extends Vue {
     line-height: 10px;
     padding-top: 4px;
     color: #a0a0a0;
+    line-height:1.3;
   }
   .span-status{
     font-size: 12px;

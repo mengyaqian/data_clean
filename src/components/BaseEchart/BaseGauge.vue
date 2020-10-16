@@ -95,7 +95,7 @@ export default class BaseEchartGauge extends Vue {
             },
             axisLabel: {
               distance: 2,
-              color: "#707070",
+              color: "#fff",
               fontSize: 10,
               padding: [20, -30, 0, -30],
             },
