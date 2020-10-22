@@ -42,7 +42,7 @@ export default class Home extends Vue {
     width: 640px;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 32px 64px;
+    padding: 32px;
     text-align: center;
     z-index: 2;
     .p-hello {
@@ -65,7 +65,7 @@ export default class Home extends Vue {
     .img-box {
       width: 320px;
       height: 320px;
-      margin: 32px auto;
+      margin: 20px auto;
       img {
         width: 320px;
         height: 320px;

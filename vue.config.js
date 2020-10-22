@@ -3,7 +3,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/hce": {
-        target: "http://10.0.0.198:5010",
+        target: "https://repository.chinanorth.cloudapp.chinacloudapi.cn",
         changeOrigin: true,
       },
     },
