@@ -69,6 +69,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 | 组件命名 | 驼峰+首字母大写 |
 | 基础组件 | 以Base开头 |
 
+###根据博客https://juejin.im/post/6844904192331481101
+
 ### element ui 自定义主题
 由于项目中使用的是 less，所以用命令行主题工具 自定义主题 (https://element.eleme.cn/#/zh-CN/component/custom-theme)
 
